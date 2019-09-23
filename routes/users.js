@@ -36,18 +36,17 @@ router.get("/register", (req, res) => {
 
 
   router.post("/register", (req, res) => {
-      console.log("user")
-        return db.query(`
-            INSERT INTO users (username, password)
-            VALUES ($1, $2)
-            RETURNING *;
-        `, [req.body.username, req.body.password])
-        .then ((res) => {
-          return res.rows[0]
-        })
-        .then (res.redirect("/"))
-        .catch (err => 
-          console.log(err))
+    return db.query(`
+        INSERT INTO users (username, password)
+        VALUES ($1, $2)
+        RETURNING *;
+    `, [req.body.username, req.body.password])
+    .then ((res) => {
+      return res.rows[0]
+    })
+    .then (res.redirect("/"))
+    .catch (err => 
+      console.log(err))
   })
 
 
