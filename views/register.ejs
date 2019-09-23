@@ -7,9 +7,9 @@
 
   <body>
     <h1>Register!</h1>
-    <form class="form-inline" method="POST" action="/register">
-        <label for="email" type="email" name="email">E-mail</label>
-        <input class="form-control" type="text" name="email">
+    <form id="signUp" class="form-inline" method="POST" action="/users/register">
+        <label for="username" type="text" name="username">Username</label>
+        <input class="form-control" type="text" name="username">
         <label for="password" type="password" name="password">Password</label>
         <input class="form-control" type="text" name="password">
         <button type="submit" class="btn btn-primary">Submit</button>
