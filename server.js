@@ -34,12 +34,16 @@ app.use(express.static("public"));
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
+const gameRoutes = require("./routes/games")
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
-app.use("/api/users", usersRoutes(db));
+app.use("/users", usersRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
+// const gameRouter = express.Router();
+// gameRoutes(gameRouter, db);
+app.use("/games", gameRoutes(db));
 
 // Home page
 // Warning: avoid creating more routes in this file!
@@ -48,17 +52,21 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.get("/uno", (req, res) => {
-  res.render("uno");
-});
+// app.get("/uno", (req, res) => {
+//   res.render("uno");
+// });
 
-app.get("/login", (req, res) => {
-  res.render("login");
-});
+// app.get("/login", (req, res) => {
+//   res.render("login");
+// });
 
-app.get("/register", (req, res) => {
-  res.render("register");
-});
+// app.get("/register", (req, res) => {
+//   res.render("register");
+// });
+
+// app.get("/unoGame", (req, res) => {
+//   res.render("unoGame");
+// });
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
