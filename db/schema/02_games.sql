@@ -4,6 +4,5 @@ CREATE TABLE games (
   creator_id INTEGER REFERENCES users(id) NOT NULL,
   opponent_id INTEGER REFERENCES users(id),
   turn INTEGER NOT NULL DEFAULT 1,
-  deck_id INTEGER REFERENCES decks(id),
   active BOOLEAN NOT NULL DEFAULT TRUE 
 );
