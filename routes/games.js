@@ -1,8 +1,5 @@
 const express = require('express');
 const router  = express.Router();
-const { Pool } = require('pg');
-const db = new Pool();
-
 
 module.exports = function (db) {
 
@@ -18,14 +15,13 @@ module.exports = function (db) {
     router.post("/uno/1", (req, res) => {
       console.log("entered unoGame post request!")
       return db.query(`
-      INSERT INTO games(creator_id)
-      VALUES(1)
+      INSERT INTO games(creator_id, turn, active)
+      VALUES(1, 1, true)
       RETURNING *;
       `)
-      .then (res => res.rows[0])
-      .catch(err => null)
-      console.log("hi");
-      // res.render("gameID");
+      .then (res => res.rows)
+      .then (res.render("gameID"))
+      .catch(err => console.log(err))
     });
 
     return router;
