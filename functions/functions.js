@@ -1,7 +1,7 @@
 //check whether user can play the cards
 const currentCards = {colour:'blue',value:1};
 const userHand = [
-  {colour:'red','value':10},
+  {colour:'blue','value':2},
   {colour:'yellow','value':1},
   {colour:'blue','value':2}
 ]
