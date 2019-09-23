@@ -120,8 +120,9 @@ VALUES ('green', 0),
 ('green', 20);
 
 INSERT INTO cards (colour, value)
+VALUES
 -- wild cards (colour change)
-VALUES ('black', 50),
+('black', 50),
 ('black', 50),
 ('black', 50),
 ('black', 50),
