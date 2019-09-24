@@ -6,9 +6,10 @@
                 <p>Logged in as: CURRENT USER (Only shows when logged in)</p>
                 <a class="nav item nav-link" href="users/login">Login</a>
                 <a class="nav item nav-link" href="users/register">Register</a>
-                <p>
-                <a class="nav item nav-link" href="users/logout">Logout(Only display when logged in)</a>
-                </p>
+                <!-- <a class="nav item nav-link" href="users/logout">Logout(Only display when logged in)</a> -->
+                <form class="form-inline" method="POST" action="/users/logout">
+                  <button type="submit" class="btn btn-primary">Logout</button> 
+                </form>
             </div>
         
           </div>
