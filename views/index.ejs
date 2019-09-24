@@ -1,23 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Home Page</title>
-    <% include ./partials/_header %>
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/_header.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css"type="text/css" />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Card Games</title>
+  <link rel="stylesheet" href="styles/styles.css" type="text/css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <section id="nav-bar">
 
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
-  </head>
 
-  <body>
-    <h1>Select your game!</h1>
-    <form>
-      <a href="/games/uno" class="btn btn-default">UNO!</a>
-      <button>Yu-Gi-Oh!</button>
-      <button>Pokemon!</button>
-    </form>
-  </body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <a class="navbar-brand" href="#"><img src="/images/LogoMakr_2z32b9.png"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Games</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Testimonials</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">Contact Us</a>
+            </li>
+        </ul>
+      </div>
+    </nav>
+
+
+  </section>
+
+  <!-------------Banner section----------->
+  <section id="banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <p class="websiteTitle">TKS CARD GAMES!</p>
+                <p>Play all of your favourite card games with your friends and family! We have the most popular 
+                    games such as Dos, Pokemans and Yu-Gee-Oh! </p>
+                <button class="login">Login</button>
+                <button class="register">SignUp</button>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="/images/—Pngtree—virtual reality, character, board game,_4377825.png" class="img-fluid">
+            </div>
+        </div>
+    </div>
+    <img src="/images/wave-top.png" class="topWave">
+
+  </section>
+</body>
+<!-- <a href='https://pngtree.com/so/virtual reality'>virtual reality png from pngtree.com</a> -->
 </html>
