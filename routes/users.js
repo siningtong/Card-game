@@ -7,9 +7,7 @@
 
 const express = require('express');
 const router = express.Router();
-const cookieParser = require('cookie-parser')
-const app= express()
-app.use(cookieParser())
+
 
 module.exports = (db) => {
   router.get("/", (req, res) => {

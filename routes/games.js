@@ -9,7 +9,7 @@ module.exports = function (db) {
     FROM games
   `)
   .then((response) => {
-    console.log("games", response.rows[0].id)
+    //console.log("games", response.rows[0].id)
       res.render("uno", {games: response.rows})
     })
   .catch(err => console.log(err))
