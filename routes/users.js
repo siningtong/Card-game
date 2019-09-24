@@ -51,30 +51,30 @@ router.get("/register", (req, res) => {
   })
 
 
-
 //check uesername and passeord
 //server.js will add /user before /login
 router.post('/login', (req, res) => {
+
   console.log('hello')
+  console.log(req.body.username);
+  let username = req.body.username;
+  let found = null;
+
   return db.query(`
   select * from users
   where username = $1 and password = $2;
   `, [req.body.username, req.body.password])
     .then(data => {
       const user = data.rows;
+      console.log("user id = " + user.id);
       res.redirect('/')
       // res.json({ user });
     })
     .then(()=>{
       console.log('log in success')
     })
-    .catch(erro => console.log(erro))
+    .catch(err => console.log(err))
 });
-
-
-
-
-
 
 
 
