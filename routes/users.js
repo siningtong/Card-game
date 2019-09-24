@@ -7,9 +7,7 @@
 
 const express = require('express');
 const router = express.Router();
-const cookieParser = require('cookie-parser')
-const app= express()
-app.use(cookieParser())
+const cookieParser = require('cookie-parser');
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
@@ -72,31 +70,29 @@ router.get("/highscores", (req, res) => {
 
 //check uesername and passeord
 //server.js will add /users before /login
-router.post('/login', (req, res) => {
-  return db.query(`
-  select * from users
-  where username = $1;
-  `, [req.body.username])
+  router.post('/login', (req, res) => {
+    return db.query(`
+    select * from users
+    where username = $1;
+    `, [req.body.username])
     .then(data => {
       const user = data.rows[0];
       if(user) {
-        if (user.password === req.body.password){
+        if (user.password === req.body.password) {
           res.cookie('userID',user.id);
           res.redirect('/')
         } else {
           res.send('Bad request')
         }
       }
-      else{
-        res.send('Bad request')
-      }
     })
-    .catch(erro => console.log(error))
-});
-router.post('/logout', (req,res) => {
-  res.clearCookie('userID');
-  res.redirect('/');
-});
+    .catch(error => console.log(error))
+  });
+
+  router.post('/logout', (req, res) => {
+    res.clearCookie('userID');
+    res.redirect('/');
+  });
 
 return router;
 
