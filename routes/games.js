@@ -1,5 +1,5 @@
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 
 module.exports = function (db) {
 
@@ -25,7 +25,7 @@ module.exports = function (db) {
       SET opponent_id = $1
       WHERE id = $2
       RETURNING *;
-      `, [4, req.params.id])
+      `, [req.cookies.userID, req.params.id])
       .then ((res) => {
         return res.rows
       })
@@ -40,7 +40,7 @@ module.exports = function (db) {
     INSERT INTO games(creator_id)
     VALUES($1)
     RETURNING *;
-    `, [1])
+    `, [req.cookies.userID])
     .then (res => res.rows)
     .then (res.render("gameID"))
     .catch(err => console.log(err))
