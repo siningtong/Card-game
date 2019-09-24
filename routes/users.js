@@ -33,6 +33,20 @@ router.get("/register", (req, res) => {
   res.render("register");
 });
 
+router.get("/highscores", (req, res) => {
+  db.query(`
+    SELECT games.*, users.username
+    FROM games
+    JOIN users ON users.id = creator_id
+    GROUP BY games.id, users.id
+    ORDER BY games.id;
+  `)
+  .then((response) => {
+      res.render("highscores", {games: response.rows})
+    })
+  .catch(err => console.log(err))
+  })
+
 ///////////////////
 // POST REQUESTS //
 ///////////////////
@@ -59,7 +73,6 @@ router.get("/register", (req, res) => {
 //check uesername and passeord
 //server.js will add /users before /login
 router.post('/login', (req, res) => {
-  console.log('hello')
   return db.query(`
   select * from users
   where username = $1;
@@ -78,22 +91,12 @@ router.post('/login', (req, res) => {
         res.send('Bad request')
       }
     })
-    // .then(()=>{
-    //   console.log('log in success')
-    // })
-    .catch(erro => console.log(erro))
+    .catch(erro => console.log(error))
 });
 router.post('/logout', (req,res) => {
   res.clearCookie('userID');
   res.redirect('/');
 });
-
-
-
-
-
-
-
 
 return router;
 
