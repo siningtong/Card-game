@@ -1,17 +1,21 @@
 DROP TABLE IF EXISTS creator_hand CASCADE;
 CREATE TABLE creator_hand (
-    id serial primary key not null,
-    card_id integer references cards(id),
-    image_url VARCHAR(255),
-    in_play BOOLEAN DEFAULT FALSE
+  id SERIAL PRIMARY KEY NOT NULL,
+  card_id INTEGER REFERENCES cards(id),
+  colour VARCHAR(10) NOT NULL,
+  value VARCHAR(255) NOT NULL,
+  playable BOOLEAN DEFAULT TRUE,
+  image_url VARCHAR(255)
 );
 
 DROP TABLE IF EXISTS opponent_hand CASCADE;
 CREATE TABLE opponent_hand (
-    id serial primary key not null,
-    card_id integer references cards(id),
-    image_url VARCHAR(255),
-    in_play BOOLEAN DEFAULT FALSE
+  id SERIAL PRIMARY KEY NOT NULL,
+  card_id INTEGER REFERENCES cards(id),
+  colour VARCHAR(10) NOT NULL,
+  value VARCHAR(255) NOT NULL,
+  playable BOOLEAN DEFAULT TRUE,
+  image_url VARCHAR(255)
 );
 
 
