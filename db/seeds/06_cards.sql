@@ -30,34 +30,34 @@ VALUES ('blue', 0, '/images/0-blue.png'),
 ('blue', 20, '/images/reverse-blue.png');
 
 INSERT INTO cards (colour, value, image_url)
-VALUES ('yellow', 0, '/images/0-yellow'),
-('yellow', 1, '/images/1-yellow'),
-('yellow', 2, '/images/2-yellow'),
-('yellow', 3, '/images/3-yellow'),
-('yellow', 4, '/images/4-yellow'),
-('yellow', 5, '/images/5-yellow'),
-('yellow', 6, '/images/6-yellow'),
-('yellow', 7, '/images/7-yellow'),
-('yellow', 8, '/images/8-yellow'),
-('yellow', 9, '/images/9-yellow'),
-('yellow', 1, '/images/1-yellow'),
-('yellow', 2, '/images/2-yellow'),
-('yellow', 3, '/images/3-yellow'),
-('yellow', 4, '/images/4-yellow'),
-('yellow', 5, '/images/5-yellow'),
-('yellow', 6, '/images/6-yellow'),
-('yellow', 7, '/images/7-yellow'),
-('yellow', 8, '/images/8-yellow'),
-('yellow', 9, '/images/9-yellow'),
+VALUES ('yellow', 0, '/images/0-yellow.png'),
+('yellow', 1, '/images/1-yellow.png'),
+('yellow', 2, '/images/2-yellow.png'),
+('yellow', 3, '/images/3-yellow.png'),
+('yellow', 4, '/images/4-yellow.png'),
+('yellow', 5, '/images/5-yellow.png'),
+('yellow', 6, '/images/6-yellow.png'),
+('yellow', 7, '/images/7-yellow.png'),
+('yellow', 8, '/images/8-yellow.png'),
+('yellow', 9, '/images/9-yellow.png'),
+('yellow', 1, '/images/1-yellow.png'),
+('yellow', 2, '/images/2-yellow.png'),
+('yellow', 3, '/images/3-yellow.png'),
+('yellow', 4, '/images/4-yellow.png'),
+('yellow', 5, '/images/5-yellow.png'),
+('yellow', 6, '/images/6-yellow.png'),
+('yellow', 7, '/images/7-yellow.png'),
+('yellow', 8, '/images/8-yellow.png'),
+('yellow', 9, '/images/9-yellow.png'),
 -- skip
-('yellow', 20, '/images/skip-yellow'),
-('yellow', 20, '/images/skip-yellow'),
+('yellow', 20, '/images/skip-yellow.png'),
+('yellow', 20, '/images/skip-yellow.png'),
 -- add two
-('yellow', 20, '/images/add-two-yellow'),
-('yellow', 20, '/images/add-two-yellow'),
+('yellow', 20, '/images/add-two-yellow.png'),
+('yellow', 20, '/images/add-two-yellow.png'),
 -- reverse
-('yellow', 20, '/images/reverse-yellow'),
-('yellow', 20, '/images/reverse-yellow');
+('yellow', 20, '/images/reverse-yellow.png'),
+('yellow', 20, '/images/reverse-yellow.png');
 
 INSERT INTO cards (colour, value, image_url)
 VALUES ('red/', 0, '/images/0-red.png'),
@@ -122,13 +122,12 @@ VALUES ('green', 0, '/images/0-green.png'),
 INSERT INTO cards (colour, value, image_url)
 VALUES
 -- wild cards (colour change)
-('black', 50, '/images/0-wild-card.png'),
-('black', 50, '/images/0-wild-card.png'),
-('black', 50, '/images/0-wild-card.png'),
-('black', 50, '/images/0-wild-card.png'),
+('black', 50, '/images/wild-card.png'),
+('black', 50, '/images/wild-card.png'),
+('black', 50, '/images/wild-card.png'),
+('black', 50, '/images/wild-card.png'),
 -- wild cards (draw fourwild-'black', 50, 'images/0-wild-.png'),
-('black', 50, '/images/0-wild-add-four.png'),
-('black', 50, '/images/0-wild-add-four.png'),
-('black', 50, '/images/0-wild-add-four.png'),
-('black', 50, '/images/0-wild-add-four.png');
-
+('black', 50, '/images/wild-add-four.png'),
+('black', 50, '/images/wild-add-four.png'),
+('black', 50, '/images/wild-add-four.png'),
+('black', 50, '/images/wild-add-four.png');
