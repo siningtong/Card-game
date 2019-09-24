@@ -15,6 +15,7 @@ const cookieParser = require('cookie-parser');
 const { Pool } = require('pg');
 const dbParams = require('./lib/db.js');
 const db = new Pool(dbParams);
+const gameHelpers = require('./public/scripts/gamePlay.js')(db);
 db.connect();
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -37,7 +38,7 @@ app.use(express.static("public"));
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
-const gameRoutes = require("./routes/games")
+const gameRoutes = require("./routes/games.js");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -46,7 +47,7 @@ app.use("/users", usersRoutes(db));
 
 // const gameRouter = express.Router();
 // gameRoutes(gameRouter, db);
-app.use("/games", gameRoutes(db));
+app.use("/games", gameRoutes(gameHelpers));
 
 // Home page
 // Warning: avoid creating more routes in this file!
