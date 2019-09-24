@@ -1,8 +1,9 @@
-INSERT INTO creator_hand (card_id)
-SELECT id
+INSERT INTO creator_hand (card_id, image_url)
+SELECT id, image_url
 FROM cards 
 ORDER BY random() 
-LIMIT 7;
+LIMIT 7
+RETURNING *;
 
 UPDATE cards
 SET playable = false

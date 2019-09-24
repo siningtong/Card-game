@@ -16,7 +16,31 @@ module.exports = function (db) {
     });
 
   router.get("/uno/:id", (req, res) => {
-    res.render("gameID")
+    const createGames = 
+    `INSERT INTO games(creator_id)
+    VALUES($1)
+    RETURNING *;`;
+    const startingHand = `INSERT INTO creator_hand (card_id)
+    SELECT id
+    FROM cards 
+    ORDER BY random() 
+    LIMIT 7;`
+    Promise.all([
+      db.query(createGames, [req.cookies.userID]),
+      db.query(startingHand)
+    ])
+    .then(response => console.log(response))
+    db.query(`
+        INSERT INTO creator_hand (card_id)
+        SELECT id
+        FROM cards 
+        ORDER BY random() 
+        LIMIT 7;
+    `)
+    .then ((response) => {
+        res.render("gameID", {cards: []})
+    })
+    .catch (err => console.log(err))
     });
     
   router.post("/uno/:id", (req, res) => {
@@ -29,22 +53,29 @@ module.exports = function (db) {
       .then ((res) => {
         return res.rows
       })
-      .then (res.send("it worked!"))
+      .then (res.redirect("/"))
       .catch ((err) => {
         console.log(err)
     })
   })
 
   router.post("/uno", (req, res) => {
-    return db.query(`
-    INSERT INTO games(creator_id)
-    VALUES($1)
+    db.query(`
+    INSERT INTO games (creator_id)
+    VALUES($1)`, [req.cookies.userID])
+    db.query(`
+    INSERT INTO creator_hand (card_id, image_url)
+    SELECT id, image_url
+    FROM cards 
+    ORDER BY random() 
+    LIMIT 7
     RETURNING *;
-    `, [req.cookies.userID])
-    .then (res => res.rows)
-    .then (res.render("gameID"))
-    .catch(err => console.log(err))
-  });
+    `)
+    .then((response) => {
+      res.render("gameID", {cards: response.rows})
+    })
+  .catch(err => console.log(err))
+  })
 
   return router;
 }

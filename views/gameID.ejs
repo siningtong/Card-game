@@ -12,5 +12,14 @@
 
   <body>
     <h1>UNO table + game state</h1>
+    <table class="hand-table">
+      <tbody>
+        <% for(let card of cards) { %>
+            <tr>
+              <td><img src="<%=card.image_url%>" /></td>
+            </tr>
+        <% } %>
+      </tbody>
+    </table>
   </body>
 </html>
