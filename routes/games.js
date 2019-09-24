@@ -7,9 +7,9 @@ module.exports = function (db) {
     db.query(`
     SELECT *
     FROM games
+    ORDER BY id;
   `)
   .then((response) => {
-    console.log("games", response.rows[0].id)
       res.render("uno", {games: response.rows})
     })
   .catch(err => console.log(err))
@@ -20,13 +20,12 @@ module.exports = function (db) {
     });
     
   router.post("/uno/:id", (req, res) => {
-    console.log("about to join this game!")
       db.query(`
       UPDATE games
       SET opponent_id = $1
       WHERE id = $2
       RETURNING *;
-      `, [3, req.params.id])
+      `, [4, req.params.id])
       .then ((res) => {
         return res.rows
       })
@@ -37,7 +36,6 @@ module.exports = function (db) {
   })
 
   router.post("/uno", (req, res) => {
-    console.log("entered unoGame post request!")
     return db.query(`
     INSERT INTO games(creator_id)
     VALUES($1)
