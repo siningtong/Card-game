@@ -14,27 +14,12 @@
     <div class="container" style="height:100vh;">
         <h1>UNO table + game state</h1>
     <div class="other-cards">
-      <div class="opponent-hand">
-        <img src="/images/deck-img.jpg" height="80%" />
-      </div>
-      <div class="opponent-hand">
-          <img src="/images/deck-img.jpg" height="80%" />
-      </div>
-      <div class="opponent-hand">
-        <img src="/images/deck-img.jpg" height="80%" />
-      </div>
-      <div class="opponent-hand">
-          <img src="/images/deck-img.jpg" height="80%" />
-      </div>
-      <div class="opponent-hand">
-          <img src="/images/deck-img.jpg" height="80%" />
-      </div>
-      <div class="opponent-hand">
-          <img src="/images/deck-img.jpg" height="80%" />
-        </div>
-        <div class="opponent-hand">
-            <img src="/images/deck-img.jpg" height="80%" />
+        <% for (let card of cards){%>
+          <div class="opponent-hand">
+            <img src="<%=card.image_url%>"/>
           </div>
+        <%}%>
+      </div>
     </div>
     <div class="deck-table">
       <div class="deck">
