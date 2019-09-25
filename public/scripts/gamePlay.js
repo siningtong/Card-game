@@ -39,7 +39,8 @@ module.exports = (db) => {
             return db.query(`
             INSERT INTO opponent_hand (card_id, colour, value, image_url)
             SELECT id, colour, value, image_url
-            FROM cards 
+            FROM cards
+            WHERE playable = true
             ORDER BY random() 
             LIMIT 7
             RETURNING *;
@@ -50,9 +51,35 @@ module.exports = (db) => {
         })
     }
 
+    const updateCards = () => {
+        return db.query(`
+            UPDATE cards
+            SET playable = false
+            FROM creator_hand
+            WHERE card_id = cards.id;
+        `)
+        .then((response) => {
+            return response.rows
+        }) 
+    }
+
+    const updateCards1 = () => {
+        return db.query(`
+            UPDATE cards
+            SET playable = false
+            FROM opponent_hand
+            WHERE card_id = cards.id;
+        `)
+        .then((response) => {
+            return response.rows
+        }) 
+    }
+
     return {
         getAllGames,
         newGame,
-        joinGame
+        joinGame,
+        updateCards,
+        updateCards1
     }
 }
