@@ -7,6 +7,7 @@
 
 const express = require('express');
 const router = express.Router();
+const cookieParser = require('cookie-parser');
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
@@ -30,6 +31,20 @@ router.get("/register", (req, res) => {
   res.render("register");
 });
 
+router.get("/highscores", (req, res) => {
+  db.query(`
+    SELECT games.*, users.username
+    FROM games
+    JOIN users ON users.id = creator_id
+    GROUP BY games.id, users.id
+    ORDER BY games.id;
+  `)
+  .then((response) => {
+      res.render("highscores", {games: response.rows})
+    })
+  .catch(err => console.log(err))
+  })
+
 ///////////////////
 // POST REQUESTS //
 ///////////////////
@@ -42,16 +57,18 @@ router.get("/register", (req, res) => {
             VALUES ($1, $2)
             RETURNING *;
         `, [req.body.username, req.body.password])
-        .then ((res) => {
-          return res.rows[0]
+        .then ((data) => {
+         const user = data.rows[0]
+         res.cookie('userID',user.id)
+         res.redirect("/")
         })
-        .then (res.redirect("/"))
         .catch (err => 
           console.log(err))
   })
 
 
 //check uesername and passeord
+<<<<<<< HEAD
 //server.js will add /user before /login
 router.post('/login', (req, res) => {
 
@@ -77,6 +94,32 @@ router.post('/login', (req, res) => {
 });
 
 
+=======
+//server.js will add /users before /login
+  router.post('/login', (req, res) => {
+    return db.query(`
+    select * from users
+    where username = $1;
+    `, [req.body.username])
+    .then(data => {
+      const user = data.rows[0];
+      if(user) {
+        if (user.password === req.body.password) {
+          res.cookie('userID',user.id);
+          res.redirect('/')
+        } else {
+          res.send('Bad request')
+        }
+      }
+    })
+    .catch(error => console.log(error))
+  });
+
+  router.post('/logout', (req, res) => {
+    res.clearCookie('userID');
+    res.redirect('/');
+  });
+>>>>>>> 0ae12b14f33e2761a00c526e049cc72817c85a5d
 
 return router;
 

@@ -1,28 +1,34 @@
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 
-module.exports = function (db) {
-
-    router.get("/uno", (req, res) => {
-        res.render("uno");
-      });
-
-    router.get("/uno/1", (req, res) => {
-        res.render("gameID");
-      });
-    
-
-    router.post("/uno/1", (req, res) => {
-      console.log("entered unoGame post request!")
-      return db.query(`
-      INSERT INTO games(creator_id, turn, active)
-      VALUES(1, 1, true)
-      RETURNING *;
-      `)
-      .then (res => res.rows)
-      .then (res.render("gameID"))
-      .catch(err => console.log(err))
+module.exports = function (gameHelpers) {
+  router.get("/uno", (req, res) => {
+    gameHelpers.getAllGames()
+    .then(games => {
+      res.render("uno", {games})
+    })
+  .catch(err => console.log(err))
     });
 
-    return router;
+  router.get("/uno/:id", (req, res) => {  
+    res.render("gameID")
+    .catch (err => console.log(err))
+    });
+    
+  router.post("/uno", (req, res) => {
+    gameHelpers.newGame(req.cookies.userID, req.params.userID)
+    .then(cards => {
+      res.render("gameID", {cards})
+    })
+  })
+    
+  router.post("/uno/:id", (req, res) => {
+    gameHelpers.joinGame(req.cookies.userID, req.params.id)
+    .then (cards => {
+      console.log(cards)
+      res.render("gameID", {cards})
+    })
+  })
+
+  return router;
 }

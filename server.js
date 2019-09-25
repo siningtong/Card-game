@@ -9,12 +9,13 @@ const bodyParser = require("body-parser");
 const sass       = require("node-sass-middleware");
 const app        = express();
 const morgan     = require('morgan');
-const cookieSession = require("cookie-session");
+const cookieParser = require('cookie-parser');
 
 // PG database client/connection setup
 const { Pool } = require('pg');
 const dbParams = require('./lib/db.js');
 const db = new Pool(dbParams);
+const gameHelpers = require('./public/scripts/gamePlay.js')(db);
 db.connect();
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -25,6 +26,8 @@ app.use(cookieSession({
   name: 'session',
   keys: ["example"],
 }));
+
+app.use(cookieParser());
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -39,8 +42,7 @@ app.use(express.static("public"));
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
-const gameRoutes = require("./routes/games")
-const database = require("./database")
+const gameRoutes = require("./routes/games.js");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -49,7 +51,7 @@ app.use("/users", usersRoutes(db));
 
 // const gameRouter = express.Router();
 // gameRoutes(gameRouter, db);
-app.use("/games", gameRoutes(db));
+app.use("/games", gameRoutes(gameHelpers));
 
 // Home page
 // Warning: avoid creating more routes in this file!

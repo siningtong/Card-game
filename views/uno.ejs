@@ -2,13 +2,35 @@
 <html lang="en">
   <head>
     <title>Home Page</title>
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
 
   </head>
 
   <body>
     <h1>The UNO page!</h1>
-    <form method="POST" action="uno/1">
+    <form method="POST" action="/games/uno">
       <button name="startGame" value="startGame">Start a game of UNO!</button>
     </form>
+    <table class="games-table">
+      <thead>
+          <tr>
+              <th scope="col">Game ID</th>
+              <th scope="col">Join Game</th>
+          </tr>
+      </thead>
+      <tbody>
+      <% for(let game of games) { %>
+          <tr>
+              <td><%= game.id %></td>
+              <td><form method="POST" action="/games/uno/<%= game.id %>"><button type="submit">JOIN</button></form></td>
+          </tr>
+      <% } %>
+      </tbody>
+  </table>
   </body>
 </html>
