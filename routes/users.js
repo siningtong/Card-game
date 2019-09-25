@@ -68,33 +68,6 @@ router.get("/highscores", (req, res) => {
 
 
 //check uesername and passeord
-<<<<<<< HEAD
-//server.js will add /user before /login
-router.post('/login', (req, res) => {
-
-  console.log('hello')
-  console.log(req.body.username);
-  let username = req.body.username;
-  let found = null;
-
-  return db.query(`
-  select * from users
-  where username = $1 and password = $2;
-  `, [req.body.username, req.body.password])
-    .then(data => {
-      const user = data.rows;
-      console.log("user id = " + user.id);
-      res.redirect('/')
-      // res.json({ user });
-    })
-    .then(()=>{
-      console.log('log in success')
-    })
-    .catch(err => console.log(err))
-});
-
-
-=======
 //server.js will add /users before /login
   router.post('/login', (req, res) => {
     return db.query(`
@@ -119,7 +92,6 @@ router.post('/login', (req, res) => {
     res.clearCookie('userID');
     res.redirect('/');
   });
->>>>>>> 0ae12b14f33e2761a00c526e049cc72817c85a5d
 
 return router;
 
