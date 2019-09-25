@@ -127,7 +127,14 @@ VALUES
 ('black', 50, '/images/wild-card.png'),
 ('black', 50, '/images/wild-card.png'),
 -- wild cards (draw fourwild-'black', 50, 'images/0-wild-.png'),
+<<<<<<< HEAD
+('black', 50, 'images/0-wild-add-four.png'),
+('black', 50, 'images/0-wild-add-four.png'),
+('black', 50, 'images/0-wild-add-four.png'),
+('black', 50, 'images/0-wild-add-four.png');
+=======
 ('black', 50, '/images/wild-add-four.png'),
 ('black', 50, '/images/wild-add-four.png'),
 ('black', 50, '/images/wild-add-four.png'),
 ('black', 50, '/images/wild-add-four.png');
+>>>>>>> 0ae12b14f33e2761a00c526e049cc72817c85a5d
