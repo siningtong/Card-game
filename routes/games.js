@@ -18,6 +18,7 @@ module.exports = function (gameHelpers) {
   router.post("/uno", (req, res) => {
     gameHelpers.newGame(req.cookies.userID, req.params.userID)
     .then(cards => {
+       console.log('Game creator card:', cards);
       res.render("gameID", {cards})
     })
   })
@@ -27,7 +28,7 @@ module.exports = function (gameHelpers) {
     gameHelpers.updateCards()
     gameHelpers.updateCards1()
     .then (cards => {
-      console.log(cards)
+      //  console.log('Game Joiner card:', cards);
       res.render("gameID", {cards})
     })
   })
