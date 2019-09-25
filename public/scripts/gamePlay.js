@@ -9,23 +9,22 @@ module.exports = (db) => {
             return response.rows
         })
     }
-    
+
     const newGame = (userID) => {
         return db.query(`
             INSERT INTO games (creator_id)
-            VALUES($1)`, [userID])
+            VALUES($1);`, [userID])
         .then(() => {
             return db.query(`
-            INSERT INTO creator_hand (card_id, colour, value, image_url)
-            SELECT id, colour, value, image_url
-            FROM cards 
-            ORDER BY random() 
-            LIMIT 7
-            RETURNING *;
-            `)
-            .then((response) => {
+                INSERT INTO creator_hand (card_id, colour, value, image_url)
+                SELECT id, colour, value, image_url
+                FROM cards 
+                ORDER BY random() 
+                LIMIT 7
+                RETURNING *;`)
+        })
+        .then((response) => {
             return response.rows
-            })
         })
     }
 
@@ -44,12 +43,12 @@ module.exports = (db) => {
             ORDER BY random() 
             LIMIT 7
             RETURNING *;
-        `)
+            `)
+        })
         .then((response) => {
             return response.rows
         })
-    })
-}
+    }
 
     return {
         getAllGames,
