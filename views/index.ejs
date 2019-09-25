@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -25,19 +26,19 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#">Home</a>
+            <a class="nav-link" href="#banner">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Games</a>
+            <a class="nav-link" href="#games">Games</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">About Us</a>
+            <a class="nav-link" href="#aboutUs">About Us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Testimonials</a>
+            <a class="nav-link" href="#testimonials">Testimonials</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="#">Contact Us</a>
+              <a class="nav-link" href="#socialMedia">Contact Us</a>
             </li>
         </ul>
       </div>
@@ -160,9 +161,24 @@
                 <img src="/images/LogoMakr_2z32b9.png">
                 <p>Play all of your favourite card games with your friends and family! We have the most popular games such as Dos, Pokemans and Yu-Gee-Oh!</p>
             </div>
+            <div class="col-md-4 footerText">
+                <p class="contactUsText" style="margin-top: 25px;"><b>Contact Us</b></p>
+                <p><i class="fa fa-map-pin"></i>Lighthouse Labs, Vancouver, BC</p>
+                <p><i class="fa fa-mobile"></i>(604)123-4567</p>
+                <p><i class="fa fa-envelope"></i>TKSCardGames@Gmail.com</p>
+            </div>
+            <div class="col-md-4 footerText">
+                <p style="margin-top: 25px;"><b>Subscribe!</b></p>
+                <input type="email" class="form-control" placeholder="Your E-Mail!">
+                <button class="subscribe">Subscribe</button>
+            </div>
         </div>
     </div>
 
+    <script src="/scripts/smooth-scroll.js"></script>
+    <script>
+            var scroll = new SmoothScroll('a[href*="#"]');
+        </script>
 
   </section>
 
@@ -173,3 +189,23 @@
 </html>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- used some youtube tutorials for ideas -->
