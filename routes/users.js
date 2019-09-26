@@ -67,7 +67,6 @@ router.get("/highscores", (req, res) => {
   })
 
 
-
 //check uesername and passeord
 //server.js will add /users before /login
   router.post('/login', (req, res) => {
