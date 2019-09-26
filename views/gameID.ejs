@@ -29,12 +29,12 @@
         <img src="/images/deck-img.jpg" height="80%" />
       </div>
       <div class="current-card">
-          <img src="/images/deck-img.jpg" height="80%" />
+          <img src="/images/deck-img.jpg" data-value="7" data-colour="blue" height="80%" />
       </div>
     </div>
       <div class="cards">
           <% for(let card of cards) { %>
-            <div class="uno-card draggable" data-colour="<%=card.colour%>" data-value="<%=card.value%>"data-gameid="">
+            <div src="<%=card.image_url%>" class="uno-card draggable" data-colour="<%=card.colour%>" data-value="<%=card.value%>"data-gameid="">
                 <img src="<%=card.image_url%>" />
             </div>
           <% } %>

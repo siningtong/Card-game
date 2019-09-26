@@ -34,7 +34,7 @@ module.exports = function (gameHelpers) {
   router.post("/uno/:id", (req, res) => {
     gameHelpers.joinGame(req.cookies.userID, req.params.id)
     .then (cards => {
-      //  console.log('Game Joiner card:', cards);
+      //  console.log('Game ]5432 Joiner card:', cards);
       res.render("gameID", {cards, gameID: req.params.id})
     })
   })

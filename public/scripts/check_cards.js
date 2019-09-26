@@ -1,38 +1,20 @@
 $(document).ready(function(){
 
   // when page loads keep track of hand
-  const defaultCurrentCard = {
-    value: '8',
-    colour: 'green'
-  }
   $('.uno-card').on('click',function(event){
-    // event.target.color
-    // event is the div -> card id
-    event.preventDefault();
+    // const card = $(this);
+    console.log($(".current-card img").data('colour'),$(".current-card img").data('value'))
 
-    const card = $(this);
-
-    console.log(card.data('colour'), card.data('value'))
-    if(event.target.colour !== defaultCurrentCard.colour || event.target.value !== defaultCurrentCard.value){
-      
-      return false
+    console.log(($(this).data('colour')), $(this).data('value'))
+    if(($(this).data('colour')) === ($(".current-card img").data('colour')) || ($(this).data('value')) === ($(".current-card img").data('value')) ||$(this).data('colour') === 'black'){  
+    $(".current-card img").attr("src",($(this).attr("src")))
+    $(this).remove();
     }
-    else{
-      $.ajax({
-        type:'POST',
-        url:'/uno/:id/playcard',
-        data:{colour:card.data('colour'),value:card.data('value')}
-      })
-
-    }
-    
+      // $.ajax({
+      //   type:'POST',
+      //   url:'/uno/:id/playcard',
+      //   data:{colour:card.data('colour'),value:card.data('value')}
+      // })
   })
+ 
 })
-
-
-const currentCards = function(){
-  db.query(`
-  select * from decks
-  
-  `)
-}
