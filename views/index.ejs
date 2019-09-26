@@ -9,8 +9,9 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/afff26de13.js" crossorigin="anonymous"></script>
 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.mint.css"> -->
 </head>
 <body>
 
@@ -23,8 +24,12 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="navbarNav">
+        
         <ul class="navbar-nav ml-auto">
+          
+
           <li class="nav-item">
             <a class="nav-link" href="#banner">Home</a>
           </li>
@@ -40,6 +45,8 @@
           <li class="nav-item">
               <a class="nav-link" href="#socialMedia">Contact Us</a>
             </li>
+
+          
         </ul>
       </div>
     </nav>
@@ -52,10 +59,98 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <p class="websiteTitle">TKS CARD GAMES!</p>
+                <p class="websiteTitle">T.K.S. CARD GAMES!</p>
                 <p>Play all of your favourite card games with your friends and family! We have the most popular games such as Dos, Pokemans and Yu-Gee-Oh! </p>
-                <button class="login">Login</button>
-                <button class="register">SignUp</button>
+                
+                
+                <% if (user === undefined) { %>
+                
+                <button class="login" data-toggle="modal" data-target="#modalLoginForm">Login</button>
+        
+
+
+                <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header text-center">
+                      <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <form method="POST" action="/users/login">
+                    <div class="modal-body mx-3">
+                        <div class="md-form">
+                          <i class="fas fa-envelope prefix grey-text"></i>
+                          <input type="text" name="username" class="form-control validate">
+                          <label class="yourEmailText w-100 font-weight-bold" name="username" type="text" for="username">Your Username</label>
+                        </div>
+              
+                        <div class="md-form mb-4">
+                          <i class="fas fa-lock prefix grey-text"></i>
+                          <input type="password" name="password" id="defaultForm-pass" class="form-control validate">
+                          <label class="yourEmailText w-100 font-weight-bold" name="password" type="text" for="password">Your password</label>
+                        </div>
+              
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                      <button class="allGamesButton" type="submit">Login</button>
+                    </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+
+
+                              
+              <button class="register" data-toggle="modal" data-target="#modalRegistrationForm">SignUp</button>
+        
+
+
+              <div class="modal fade" id="modalRegistrationForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Registration</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <form method="POST" action="/users/register">
+                  <div class="modal-body mx-3">
+                    <div class="md-form">
+                      <i class="fas fa-envelope prefix grey-text"></i>
+                      <input type="text" name="username" class="form-control validate">
+                      <label class="yourEmailText w-100 font-weight-bold" name="username" type="text" for="username">Your Username</label>
+                    </div>
+            
+                    <div class="md-form mb-4">
+                      <i class="fas fa-lock prefix grey-text"></i>
+                      <input type="password" name="password" id="defaultForm-pass" class="form-control validate">
+                      <label class="yourEmailText w-100 font-weight-bold" name="password" type="text" for="password">Your password</label>
+                    </div>
+            
+                  </div>
+                  <div class="modal-footer d-flex justify-content-center">
+                    <button class="allGamesButton" type="submit">Sign up!</button>
+                  </div>
+                </form>
+                </div>
+              </div>
+            </div>
+
+
+            <% } else { %>
+
+
+              <form method="POST" action="/users/logout">
+                <button type="submit" class="login">Logout</button> 
+              </form>
+            <% } %>
+
+            
+
             </div>
             <div class="col-md-6 text-center">
                 <img src="/images/—Pngtree—virtual reality, character, board game,_4377825.png" class="img-fluid">
@@ -72,9 +167,11 @@
         <h1 class="title">Select your Game!</h1>
         <div class="row text-center">
             <div class="col-md-4 games">
+                <a href="/games/uno">
                 <img src="/images/1200px-UNO_Logo.svg.png" class="unoIMG">
-
+                
                 <p class="unoP">Crazy Eights with a twist! Be the first to get rid of all the cards in your hand to win! Mess with your friends by making them draw more cards!</p>
+                </a>
             </div>
             <div class="col-md-4 games">
                 <img src="/images/300px-Yu-Gi-Oh!_Duelist_logo.png" class="yugiohIMG">
@@ -141,12 +238,12 @@
     <div class="container text-center">
         <p>Follow us on social media to get our latest updates!</p>
         <div class="socialMediaIcons">
-            <a href="#"><img src="/images/whats-icon.png"></a>
-            <a href="#"><img src="/images/twitter-icon.png"></a>
-            <a href="#"><img src="/images/snap-icon.png"></a>
-            <a href="#"><img src="/images/linked-icon.png"></a>
-            <a href="#"><img src="/images/insta-icon.png"></a>
             <a href="#"><img src="/images/fb-icon.png"></a>
+            <a href="#"><img src="/images/linked-icon.png"></a>
+            <a href="#"><img src="/images/twitter-icon.png"></a>
+            <a href="#"><img src="/images/whats-icon.png"></a>
+            <a href="#"><img src="/images/insta-icon.png"></a>
+            <a href="#"><img src="/images/snap-icon.png"></a>
         </div>
     </div>
   </section>
@@ -168,7 +265,7 @@
                 <p><i class="fa fa-envelope"></i>TKSCardGames@Gmail.com</p>
             </div>
             <div class="col-md-4 footerText">
-                <p style="margin-top: 25px;"><b>Subscribe!</b></p>
+                <p style="margin-top: 25px;"><b>Subscribe to our Newsletter!</b></p>
                 <input type="email" class="form-control" placeholder="Your E-Mail!">
                 <button class="subscribe">Subscribe</button>
             </div>
