@@ -10,26 +10,17 @@ module.exports = function (gameHelpers) {
   .catch(err => console.log(err))
     });
 
-  router.get("/uno/:id", (req, res) => {  
-    res.render("gameID")
-    .catch (err => console.log(err))
-    });
-    
-  router.post("/uno", (req, res) => {
-    gameHelpers.newGame(req.cookies.userID, req.params.userID)
-    .then(cards => {
-       console.log('Game creator card:', cards);
-      res.render("gameID", {cards})
+  router.post("/uno/new", (req, res) => {
+    gameHelpers.newGame(req.cookies.userID, req.params.id)
+    .then(response => {
+      res.render("gameID", {cards, gameID: req.params.id})
     })
   })
     
   router.post("/uno/:id", (req, res) => {
-    gameHelpers.joinGame(req.cookies.userID, req.params.id)
-    gameHelpers.updateCards()
-    gameHelpers.updateCards1()
-    .then (cards => {
-      //  console.log('Game Joiner card:', cards);
-      res.render("gameID", {cards})
+    gameHelpers.getDeck()
+    .then((cards) => {
+      res.render("gameID", {cards, gameID: req.params.id})
     })
   })
 

@@ -5,7 +5,6 @@
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/gameID.css" type="text/css" />
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
@@ -13,32 +12,30 @@
   <body>
     <div class="container" style="height:100vh;">
         <h1>UNO table + game state</h1>
-    <div class="other-cards">
-        <% for (let card of cards){%>
-          <div class="opponent-hand">
-            <img src="<%=card.image_url%>"/>
-          </div>
-        <%}%>
+    <form id="start" method="POST" action="/games/uno/<%=gameID%>/start"><button type="submit">START</button></form>
+      <div class="opponent-cards" style="display: flex; justify-content: space-around">
+          <% const opponentHand = cards.slice(-7) %>
+            <% for (const card of opponentHand) { %>
+                  <img class="opponent-card" src="<%=card.image_url%>" height="60%"/>
+            <% } %>
       </div>
-    </div>
-    <div class="deck-table">
+    <div class="deck-table" style="display: flex; justify-content: space-around">
       <div class="deck">
-        <img src="/images/deck-img.jpg" height="80%" />
+           <img class="deck" src="/images/card-back.png" height="60%" />
+        </form>
       </div>
       <div class="current-card">
-          <img src="/images/deck-img.jpg" height="80%" />
+          <img class="current-card" src="/images/deck-img.jpg" height="60%" />
       </div>
     </div>
-      <div class="cards">
-          <% for(let card of cards) { %>
-            <div  class="uno-card">
-                <img src="<%=card.image_url%>" />
-            </div>
-          <% } %>
+      <div class="player-cards" style="display: flex; justify-content: space-around">
+          <% const playerHand = cards.slice(-7) %>
+            <% for (const card of playerHand) { %>
+                  <img class="player-card" src="<%=card.image_url%>" height="60%"/>
+            <% } %>
       </div>
     </div>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
