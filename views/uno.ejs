@@ -13,8 +13,8 @@
 
   <body>
     <h1>The UNO page!</h1>
-    <form method="POST" action="/games/uno">
-      <button name="startGame" value="startGame">Start a game of UNO!</button>
+    <form id="new-game" method="POST" action="/games/uno/new">
+      <button  name="startGame" value="startGame">Start a game of UNO!</button>
     </form>
     <table class="games-table">
       <thead>
@@ -26,7 +26,7 @@
       <tbody>
       <% for(let game of games) { %>
           <tr>
-              <td><%= game.id %></td>
+              <td class="game"><%= game.id %></td>
               <td><form method="POST" action="/games/uno/<%= game.id %>"><button type="submit">JOIN</button></form></td>
           </tr>
       <% } %>

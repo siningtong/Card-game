@@ -9,19 +9,24 @@ module.exports = (db) => {
             return response.rows
         })
     }
-
+    const getGameID = () => {
+        return db.query(`
+           SELECT id FROM games
+           ORDER BY DESC
+           LIMIT 1; 
+        `)
+        .then((response) => {
+            return response.rows
+        })
+    }
     const newGame = (userID) => {
         return db.query(`
             INSERT INTO games (creator_id)
             VALUES($1);`, [userID])
         .then(() => {
             return db.query(`
-                INSERT INTO creator_hand (card_id, colour, value, image_url)
-                SELECT id, colour, value, image_url
-                FROM cards 
-                ORDER BY random() 
-                LIMIT 7
-                RETURNING *;`)
+                SELECT * FROM creator_hand;
+                `)
         })
         .then((response) => {
             return response.rows
@@ -37,13 +42,7 @@ module.exports = (db) => {
         `, [userID, gameID])
         .then(() => {
             return db.query(`
-            INSERT INTO opponent_hand (card_id, colour, value, image_url)
-            SELECT id, colour, value, image_url
-            FROM cards
-            WHERE playable = true
-            ORDER BY random() 
-            LIMIT 7
-            RETURNING *;
+            SELECT * FROM opponent_hand;
             `)
         })
         .then((response) => {
@@ -51,35 +50,63 @@ module.exports = (db) => {
         })
     }
 
-    const updateCards = () => {
+    const updateCards1 = (gameID) => {
         return db.query(`
-            UPDATE cards
-            SET playable = false
-            FROM creator_hand
-            WHERE card_id = cards.id;
+        UPDATE creator_hand
+            SET game_id = $1;
+        `, [gameID])        
+        .then(() => {
+        return db.query(`
+        INSERT INTO creator_hand (card_id, colour, value, image_url)
+        SELECT id, colour, value, image_url
+        FROM cards
+        WHERE playable = true
+        ORDER BY random() 
+        LIMIT 7
+        RETURNING *;
         `)
-        .then((response) => {
-            return response.rows
-        }) 
+        })
     }
 
-    const updateCards1 = () => {
-        return db.query(`
-            UPDATE cards
-            SET playable = false
-            FROM opponent_hand
-            WHERE card_id = cards.id;
+    const newCard = (userID) => {
+        db.query(`
+        SELECT opponent_id FROM games
+        WHERE games.id = $1
         `)
         .then((response) => {
             return response.rows
-        }) 
+        })
+
+        return db.query(`
+        INSERT INTO opponent_hand (card_id, colour, value, image_url)
+        SELECT id, colour, value, image_url
+        FROM cards
+        WHERE playable = true
+        ORDER BY random() 
+        LIMIT 1
+        RETURNING *;`)
+        .then((response) => {
+            return response.rows
+        });
+    }
+
+    const seeHand = () => {
+        db.query(`
+            SELECT * FROM opponent_hand
+            RETURNING *;
+        `)
+        .then((response) => {
+            return response.rows
+        })
     }
 
     return {
         getAllGames,
         newGame,
         joinGame,
-        updateCards,
-        updateCards1
+        updateCards1,
+        newCard,
+        seeHand,
+        getGameID
     }
 }
