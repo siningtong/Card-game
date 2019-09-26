@@ -63,6 +63,8 @@
                 <p>Play all of your favourite card games with your friends and family! We have the most popular games such as Dos, Pokemans and Yu-Gee-Oh! </p>
                 
                 
+                <% if (user === undefined) { %>
+                
                 <button class="login" data-toggle="modal" data-target="#modalLoginForm">Login</button>
         
 
@@ -138,7 +140,15 @@
               </div>
             </div>
 
-            
+
+            <% } else { %>
+
+
+              <form method="POST" action="/users/logout">
+                <button type="submit" class="login">Logout</button> 
+              </form>
+
+            <% } %>
 
             
 
@@ -158,9 +168,11 @@
         <h1 class="title">Select your Game!</h1>
         <div class="row text-center">
             <div class="col-md-4 games">
+                <a href="/games/uno">
                 <img src="/images/1200px-UNO_Logo.svg.png" class="unoIMG">
-
+                
                 <p class="unoP">Crazy Eights with a twist! Be the first to get rid of all the cards in your hand to win! Mess with your friends by making them draw more cards!</p>
+                </a>
             </div>
             <div class="col-md-4 games">
                 <img src="/images/300px-Yu-Gi-Oh!_Duelist_logo.png" class="yugiohIMG">
@@ -254,7 +266,7 @@
                 <p><i class="fa fa-envelope"></i>TKSCardGames@Gmail.com</p>
             </div>
             <div class="col-md-4 footerText">
-                <p style="margin-top: 25px;"><b>Subscribe!</b></p>
+                <p style="margin-top: 25px;"><b>Subscribe to our Newsletter!</b></p>
                 <input type="email" class="form-control" placeholder="Your E-Mail!">
                 <button class="subscribe">Subscribe</button>
             </div>
