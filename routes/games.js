@@ -12,15 +12,16 @@ module.exports = function (gameHelpers) {
 
   router.post("/uno/new", (req, res) => {
     gameHelpers.newGame(req.cookies.userID, req.params.id)
-    .then(response => {
-      res.render("gameID", {cards, gameID: req.params.id})
+    .then(() => {
+      res.redirect("/games/uno")
     })
   })
     
   router.post("/uno/:id", (req, res) => {
     gameHelpers.getDeck()
     .then((cards) => {
-      res.render("gameID", {cards, gameID: req.params.id})
+
+      res.send(cards)
     })
   })
 

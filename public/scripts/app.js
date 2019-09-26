@@ -1,7 +1,7 @@
 $(() => {
-  // registeringClickDeckHandler()
-  // registeringClickGameHandler()
-  // registeringClickStartHandler()
+  registeringClickDeckHandler()
+  registeringClickGameHandler()
+  registeringClickStartHandler()
   playCard()
 });
 function getCookie(name) {
@@ -38,14 +38,14 @@ function registeringClickGameHandler() {
     const numGames = $(".game").length
     const url = game.attr("action");
 
-    $.ajax({
-      type: 'POST',
-      url: url,
-      data: game,
-      success: function() {   
-        location.reload();
-      }
-    })
+  //   $.ajax({
+  //     type: 'POST',
+  //     url: url,
+  //     data: game,
+  //     success: function() {   
+  //       location.reload();
+  //     }
+  //   })
   })
 }
 
@@ -68,7 +68,7 @@ function registeringClickStartHandler() {
 }
 
 function playCard() {
-  $(".card").click(function () {
+  $(".player-card").click(function () {
     $(".current-card").attr("src", $(this).attr("src"));
     $(this).remove();
 
