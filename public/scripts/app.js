@@ -1,6 +1,7 @@
 $(() => {
-  registeringClickDeckHandler()
-  registeringClickGameHandler()
+  // registeringClickDeckHandler()
+  // registeringClickGameHandler()
+  // registeringClickStartHandler()
   playCard()
 });
 function getCookie(name) {
@@ -12,8 +13,8 @@ function getCookie(name) {
 const user = getCookie('userID')
 
 function registeringClickDeckHandler() {
-  $("#draw").submit(function (event) {
-    event.preventDefault();
+  $("img.deck").click(function (event) {
+    event.preventDefault()
     const card = $(this);
     const url = card.attr("action");
     const gameID = $("#hidden-input").attr("value");
@@ -45,6 +46,24 @@ function registeringClickGameHandler() {
         location.reload();
       }
     })
+  })
+}
+
+function registeringClickStartHandler() {
+  $("#start").submit(function (event) {
+    event.preventDefault();
+    const deck = $(this);
+    console.log(deck)
+    const url = deck.attr("action");
+
+    // $.ajax({
+    //   type: 'POST',
+    //   url: url,
+    //   data: game,
+    //   success: function() {   
+    //     location.reload();
+    //   }
+    // })
   })
 }
 
