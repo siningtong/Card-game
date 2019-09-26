@@ -21,10 +21,8 @@
 
 
         <nav class="navbar navbar-expand-lg navbar-light">
-          <a class="navbar-brand" href="#"><img src="/images/LogoMakr_2z32b9.png"></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+          <a class="navbar-brand" href="/"><img src="/images/LogoMakr_2z32b9.png"></a>
+
 
           <form method="POST" style="position:absolute; right:0;" action="/users/logout">
             <button type="submit" class="logoutUno">Logout</button> 
@@ -60,17 +58,17 @@
             <div class="col-md-4 contentLeft">
                 <p class="bottomLineTitle">Game ID</p>
                 <% for(let game of games) { %>
-                <p class="bottomLine"><%= game.id %></p>
+                <p class="bottomLineText"><%= game.id %></p>
                 <% } %>
             </div>
             <div class="col-md-4 contentMiddle">
-                <p class="bottomLineTitle">Owner Username</p>  
+                <p class="bottomLineTitle">Creator</p>  
                 <% for(let game of games) { %>
-                <p class="bottomLine"><%= game.id %></p>
+                <p class="bottomLineText"><%= game.id %></p>
                 <% } %>
             </div>
             <div class="col-md-4 contentRight">
-                <p class="bottomLineTitle">Join Game</p>
+                <p class="bottomLineTitle">Join Room!</p>
                 <% for(let game of games) { %>
                 <form class="joinForm" method="POST" action="/games/uno/<%= game.id %>"><button class="joinGameButton" type="submit" >JOIN</button></form>
                 <% } %>
@@ -107,8 +105,6 @@
         </div>
 
       </section>
-
-
 
       
   </body>
