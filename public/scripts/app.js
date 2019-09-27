@@ -1,7 +1,7 @@
 $(() => {
-  // registeringClickDeckHandler()
-  // registeringClickGameHandler()
-  // registeringClickStartHandler()
+  registeringClickDeckHandler()
+  registeringClickGameHandler()
+  registeringClickStartHandler()
   playCard()
 });
 function getCookie(name) {

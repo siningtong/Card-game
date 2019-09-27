@@ -16,7 +16,6 @@
 <body>
 
 
-<<<<<<< HEAD
     <!-- ------------------Nav Bar --------------- -->
     <section id="nav-bar">
 
@@ -49,7 +48,7 @@
         <img src="/images/1200px-UNO_Logo.svg.png" class="unoIMG">
         </div>
       </div>
-    <form method="POST" action="/games/uno">
+    <form method="POST" id="new-game" action="/games/uno/new">
       <button name="startGame" value="startGame" class="startUnoGame">Start a game!</button>
     </form>
 
@@ -108,29 +107,6 @@
       </section>
 
       
-=======
-  <body>
-    <h1>The UNO page!</h1>
-    <form id="new-game" method="POST" action="/games/uno/new">
-      <button  name="startGame" value="startGame">Create Game</button>
-    </form>
-    <table class="games-table">
-      <thead>
-          <tr>
-              <th scope="col">Game ID</th>
-              <th scope="col">Join Game</th>
-          </tr>
-      </thead>
-      <tbody>
-      <% for(let game of games) { %>
-          <tr>
-              <td class="game"><%= game.id %></td>
-              <td><form method="POST" action="/games/uno/<%= game.id %>"><button type="submit">JOIN</button></form></td>
-          </tr>
-      <% } %>
-      </tbody>
-  </table>
->>>>>>> 478a8a0a21b71607a0734dd7f3d893649175db23
   </body>
 
 
