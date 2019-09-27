@@ -7,12 +7,193 @@
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
+    <link rel="stylesheet" href="/styles/styles.css" type="text/css">
   </head>
 
   <body>
-    <div class="container" style="height:100vh;">
+    <!-- --------------nav bar----------------- -->
+      <section id="nav-bar">
+
+
+          <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="/"><img src="/images/LogoMakr_2z32b9.png"></a>
+  
+  
+            <form method="POST" style="position:absolute; right:0;" action="/users/logout">
+              <button type="submit" class="logoutUno">Logout</button> 
+            </form>
+      
+          </nav>
+      
+      
+        </section>
+  
+        <!-- ----------------title bar------------- -->
+
+        <div class="row text-center" class="unoTitlePage" style="margin-top:25px;">
+            <div class="col-md-4">
+          <img src="/images/1200px-UNO_Logo.svg.png" class="unoIMG">
+          </div>
+          <div class="col-md-4 ">
+          <h1 class="title text-center">Lets play Dos!</h1>
+          </div>
+          <div class="col-md-4">
+          <img src="/images/1200px-UNO_Logo.svg.png" class="unoIMG">
+          </div>
+          <form action="/games/uno" method="GET" style="margin: auto;">
+            <button type="submit" class="startUnoGame">Back to Rooms</button>
+          </form>
+
+
+        </div>
+
+        <!-- -------------- game board ---------------- -->
+
+        <section id="theGameBoard">
+          <div class="theUnoGameBoard">
+            <div class="opponentsHand">
+                
+                    <div class="card-container"><img src="/images/1-green.png"></div>
+              
+                    <div class="card-container"><img src="/images/1-green.png"></div>
+              
+                    <div class="card-container"><img src="/images/1-green.png"></div>
+              
+                    <div class="card-container"><img src="/images/1-green.png"></div>
+              
+                    <div class="card-container"><img src="/images/1-green.png"></div>
+              
+                    <div class="card-container"><img src="/images/1-green.png"></div>
+              
+                    <div class="card-container"><img src="/images/1-green.png"></div>
+              
+                    <div class="card-container"><img src="/images/1-green.png"></div>
+             
+                    <div class="card-container"><img src="/images/1-green.png"></div>
+             
+                    <div class="card-container"><img src="/images/1-green.png"></div>
+                    <div class="card-container"><img src="/images/1-green.png"></div>
+              
+                    <div class="card-container"><img src="/images/1-green.png"></div>
+              
+                    <div class="card-container"><img src="/images/1-green.png"></div>
+              
+                    <div class="card-container"><img src="/images/1-green.png"></div>
+              
+                    <div class="card-container"><img src="/images/1-green.png"></div>
+              
+                    <div class="card-container"><img src="/images/1-green.png"></div>
+              
+                    <div class="card-container"><img src="/images/1-green.png"></div>
+              
+                    <div class="card-container"><img src="/images/1-green.png"></div>
+             
+                    <div class="card-container"><img src="/images/1-green.png"></div>
+             
+                    <div class="card-container"><img src="/images/1-green.png"></div>
+                
+
+
+
+            </div>
+              <div class="row text-center wrapper" style="margin-left: auto; margin-right: auto;">
+                <div class="col-md-6 theDeckImage">
+                  <img src="/images/1-green.png">
+                </div>
+                <div class="col-md-6 theDeckImage">
+                  <img src="/images/1-green.png">
+                </div>
+                
+              </div>
+
+
+            <div class="myHand">
+                <div class="card-container"><img src="/images/1-green.png"></div>
+              
+                    <div class="card-container"><img src="/images/1-green.png"></div>
+              
+                    <div class="card-container"><img src="/images/1-green.png"></div>
+              
+                    <div class="card-container"><img src="/images/1-green.png"></div>
+              
+                    <div class="card-container"><img src="/images/1-green.png"></div>
+              
+                    <div class="card-container"><img src="/images/1-green.png"></div>
+              
+                    <div class="card-container"><img src="/images/1-green.png"></div>
+              
+                    <div class="card-container"><img src="/images/1-green.png"></div>
+             
+                    <div class="card-container"><img src="/images/1-green.png"></div>
+             
+                    <div class="card-container"><img src="/images/1-green.png"></div>
+                    <div class="card-container"><img src="/images/1-green.png"></div>
+              
+                    <div class="card-container"><img src="/images/1-green.png"></div>
+              
+                    <div class="card-container"><img src="/images/1-green.png"></div>
+              
+                    <div class="card-container"><img src="/images/1-green.png"></div>
+              
+                    <div class="card-container"><img src="/images/1-green.png"></div>
+              
+                    <div class="card-container"><img src="/images/1-green.png"></div>
+              
+                    <div class="card-container"><img src="/images/1-green.png"></div>
+              
+                    <div class="card-container"><img src="/images/1-green.png"></div>
+             
+                    <div class="card-container"><img src="/images/1-green.png"></div>
+             
+                    <div class="card-container"><img src="/images/1-green.png"></div>
+
+            </div>
+          </div>
+      
+
+        </section>
+
+
+        <!-- ------------------Footer --------------------- -->
+
+        <section id="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 footerText">
+                        <img src="/images/LogoMakr_2z32b9.png">
+                        <p>Play all of your favourite card games with your friends and family! We have the most popular games such as Dos, Pokemans and Yu-Gee-Oh!</p>
+                    </div>
+                    <div class="col-md-4 footerText">
+                        <p class="contactUsText" style="margin-top: 25px;"><b>Contact Us</b></p>
+                        <p><i class="fa fa-map-pin"></i>Lighthouse Labs, Vancouver, BC</p>
+                        <p><i class="fa fa-mobile"></i>(604)123-4567</p>
+                        <p><i class="fa fa-envelope"></i>TKSCardGames@Gmail.com</p>
+                    </div>
+                    <div class="col-md-4 footerText">
+                        <p style="margin-top: 25px;"><b>Subscribe to our Newsletter!</b></p>
+                        <input type="email" class="form-control" placeholder="Your E-Mail!">
+                        <button class="subscribe">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+    
+          </section>
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+
+
+
+
+    <!-- <div class="container" style="height:100vh;">
         <h1>UNO table + game state</h1>
-    <!-- <form id="start" method="POST" action="/games/uno/<%=gameID%>/start"><button type="submit">START</button></form>
+    <form id="start" method="POST" action="/games/uno/<%=gameID%>/start"><button type="submit">START</button></form>
       <div class="opponent-cards" style="display: flex; justify-content: space-around">
           <% const opponentHand = cards.slice(-7) %>
             <% for (const card of opponentHand) { %>
@@ -33,10 +214,9 @@
             <% for (const card of playerHand) { %>
                   <img class="player-card" src="<%=card.image_url%>" height="60%"/>
             <% } %>
-      </div> -->
-    </div>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
-</html>
+      </div>
+    </div> -->
+
+
+
+
