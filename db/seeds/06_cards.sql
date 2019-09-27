@@ -118,16 +118,3 @@ VALUES ('green', 0, '/images/0-green.png'),
 -- reverse
 ('green', 20, '/images/reverse-green.png'),
 ('green', 20, '/images/reverse-green.png');
-
-INSERT INTO cards (colour, value, image_url)
-VALUES
--- wild cards (colour change)
-('black', 50, '/images/wild-card.png'),
-('black', 50, '/images/wild-card.png'),
-('black', 50, '/images/wild-card.png'),
-('black', 50, '/images/wild-card.png'),
--- wild cards (draw fourwild-'black', 50, 'images/0-wild-.png'),
-('black', 50, '/images/wild-add-four.png'),
-('black', 50, '/images/wild-add-four.png'),
-('black', 50, '/images/wild-add-four.png'),
-('black', 50, '/images/wild-add-four.png');

@@ -54,7 +54,7 @@ app.use("/games", gameRoutes(gameHelpers));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
-  res.render("index", {user: req.cookies.userID});
+  res.render("index", {user: req.cookies.userID, username: req.cookies.username});
 
 });
 

@@ -48,7 +48,8 @@
         <img src="/images/1200px-UNO_Logo.svg.png" class="unoIMG">
         </div>
       </div>
-    <form method="POST" id="new-game" action="/games/uno/new">
+
+    <form id="new-game" method="POST" action="/games/uno/new">
       <button name="startGame" value="startGame" class="startUnoGame">Start a game!</button>
     </form>
 
@@ -64,7 +65,7 @@
             <div class="col-md-4 contentMiddle">
                 <p class="bottomLineTitle">Creator</p>  
                 <% for(let game of games) { %>
-                <p class="bottomLineText"><%= game.id %></p>
+                <p class="bottomLineText"><%= game.username %></p>
                 <% } %>
             </div>
             <div class="col-md-4 contentRight">

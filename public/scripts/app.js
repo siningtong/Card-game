@@ -1,8 +1,8 @@
 $(() => {
-  registeringClickDeckHandler()
   registeringClickGameHandler()
   registeringClickStartHandler()
   playCard()
+  drawCard()
 });
 function getCookie(name) {
   var value = "; " + document.cookie;
@@ -12,25 +12,6 @@ function getCookie(name) {
 
 const user = getCookie('userID')
 
-function registeringClickDeckHandler() {
-  $("img.deck").click(function (event) {
-    event.preventDefault()
-    const card = $(this);
-    const url = card.attr("action");
-    const gameID = $("#hidden-input").attr("value");
-    console.log(gameID)
-
-    $.ajax({
-      type: 'POST',
-      url: url,
-      data: card,
-      success: function() {   
-        location.reload();  
-      }
-    })
-  })
-}
-
 function registeringClickGameHandler() {
   $("#new-game").submit(function (event) {
     event.preventDefault();
@@ -38,14 +19,14 @@ function registeringClickGameHandler() {
     const numGames = $(".game").length
     const url = game.attr("action");
 
-    $.ajax({
-      type: 'POST',
-      url: url,
-      data: game,
-      success: function() {   
-        location.reload();
-      }
-    })
+  //   $.ajax({
+  //     type: 'POST',
+  //     url: url,
+  //     data: game,
+  //     success: function() {   
+  //       location.reload();
+  //     }
+  //   })
   })
 }
 
@@ -53,7 +34,6 @@ function registeringClickStartHandler() {
   $("#start").submit(function (event) {
     event.preventDefault();
     const deck = $(this);
-    console.log(deck)
     const url = deck.attr("action");
 
     // $.ajax({
@@ -68,9 +48,14 @@ function registeringClickStartHandler() {
 }
 
 function playCard() {
-  $(".card").click(function () {
-    $(".current-card").attr("src", $(this).attr("src"));
-    $(this).remove();
+  $(".testDiv").click(function () {
+    if(($(".player-card").attr("colour")) === ($(".middleCard img").attr("colour"))) {
+    $(".middleCard img").attr("src", $(this).attr("src"));
+    // console.log($(".middleCard img").attr("src"))
+
+    $(".middleCard img").attr("data-colour", $(this).attr("data-colour"));
+    $(".middleCard img").attr("data-value", $(this).attr("data-value"));
+    }
 
   })
 };

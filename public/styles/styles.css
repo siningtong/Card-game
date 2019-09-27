@@ -559,7 +559,23 @@ body {
     background: #f8f9fa;
     display: flex;
     width: 100%;
-    z-index: 9999;
+    flex: 1 0 0;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    /* z-index: 9999; */
+}
+
+.testDiv {
+    flex: 1 0 0;
+    overflow-y: hidden;
+    overflow-x: hidden;
+
+}
+
+.submitButtonDraw {
+    border-color: rgba(255,255,255,0);
+    background: #f8f9fa;
+
 }
 
 .card-container {
@@ -567,8 +583,9 @@ body {
     overflow-y: hidden;
     overflow-x: hidden;
     transition: 0.5s;
-    z-index: 9999;
+    /* z-index: 9999; */
 } 
+
 
 .card-container:last-child {
     flex: 0 0 auto;
@@ -577,11 +594,22 @@ body {
 .card-container:hover {
     overflow: visible;
     transform: translateY(-10px);
-    z-index: 9999;
+    /* z-index: 9999; */
     position: relative;
 } 
 
 .theDeckImage {
+    /* padding-left: 100px;
+    padding-right: 100px; */
+    border-style: solid;
+    border: 10px solid #7b1697;
+
+    border-radius: 50px;
+    background: #f8f9fa;
+    display: inline;
+}
+
+.current-card {
     padding-left: 100px;
     padding-right: 100px;
     border-style: solid;
@@ -591,22 +619,10 @@ body {
     background: #f8f9fa;
     display: inline;
 }
-
-.theCurrentCardImage {
-    padding-left: 100px;
-    padding-right: 100px;
-    border-style: solid;
-    border: 10px solid #7b1697;
-    border-radius: 50px;
-    background: #f8f9fa;
-    display: inline;
-    
-}
-
 
 
 .wrapper {
-    width: 60%;
-    margin-left: auto;
-    margin-right: auto;
+    /* width: 60%; */
+    /* margin-left: auto;
+    margin-right: auto; */
 }
