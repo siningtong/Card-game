@@ -1,4 +1,6 @@
 module.exports = (db) => {
+    let playerHand = [];
+
     const getAllGames = () => {
         return db.query(`
         SELECT *
@@ -30,9 +32,27 @@ module.exports = (db) => {
         })
     }
 
+    // const startingCards = (cards) => {
+    //     const hand = cards.slice(-7);
+    //     playerHand.push(...hand);
+    //     return playerHand;
+    // }
+
+    const drawCard = (cards) => {
+        let numCards = -7;
+        if(playerHand.length) {
+            numCards = -1;
+        }
+        const card = cards.slice(numCards);
+        playerHand.push(...card);
+        return playerHand
+    }
+
     return {
         getAllGames,
         newGame,
-        getDeck
+        getDeck,
+        // startingCards,
+        drawCard
     }
 }

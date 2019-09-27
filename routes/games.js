@@ -20,10 +20,17 @@ module.exports = function (gameHelpers) {
   router.post("/uno/:id", (req, res) => {
     gameHelpers.getDeck()
     .then((cards) => {
-
-      res.send(cards)
+      const playerHand = gameHelpers.drawCard(cards)
+      res.render("gameID", {playerHand, gameID: req.params.id})
     })
   })
 
+  router.post("/uno/:id/drawCard", (req, res) => {
+    gameHelpers.getDeck()
+    .then((cards) => {
+      const playerHand = gameHelpers.drawCard(cards)
+      res.send(playerHand)
+    })
+  })
   return router;
 }

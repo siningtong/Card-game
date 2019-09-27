@@ -1,8 +1,8 @@
 $(() => {
-  registeringClickDeckHandler()
   registeringClickGameHandler()
   registeringClickStartHandler()
   playCard()
+  drawCard()
 });
 function getCookie(name) {
   var value = "; " + document.cookie;
@@ -11,25 +11,6 @@ function getCookie(name) {
 }
 
 const user = getCookie('userID')
-
-function registeringClickDeckHandler() {
-  $("img.deck").click(function (event) {
-    event.preventDefault()
-    const card = $(this);
-    const url = card.attr("action");
-    const gameID = $("#hidden-input").attr("value");
-    console.log(gameID)
-
-    $.ajax({
-      type: 'POST',
-      url: url,
-      data: card,
-      success: function() {   
-        location.reload();  
-      }
-    })
-  })
-}
 
 function registeringClickGameHandler() {
   $("#new-game").submit(function (event) {
@@ -53,7 +34,6 @@ function registeringClickStartHandler() {
   $("#start").submit(function (event) {
     event.preventDefault();
     const deck = $(this);
-    console.log(deck)
     const url = deck.attr("action");
 
     // $.ajax({
@@ -69,8 +49,10 @@ function registeringClickStartHandler() {
 
 function playCard() {
   $(".player-card").click(function () {
+    if(($(".player-card").attr("colour")) === ($(".current-card").attr("colour"))) {
     $(".current-card").attr("src", $(this).attr("src"));
     $(this).remove();
+    }
 
   })
 };
