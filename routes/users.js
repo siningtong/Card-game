@@ -52,6 +52,7 @@ router.get("/highscores", (req, res) => {
 
   router.post("/register", (req, res) => {
       console.log("user")
+      console.log(req.body);
         return db.query(`
             INSERT INTO users (username, password)
             VALUES ($1, $2)
@@ -65,7 +66,6 @@ router.get("/highscores", (req, res) => {
         .catch (err => 
           console.log(err))
   })
-
 
 
 //check uesername and passeord
