@@ -2,7 +2,7 @@ $(() => {
   registeringClickGameHandler()
   registeringClickStartHandler()
   playCard()
-  drawCard()
+  // drawCard()
 });
 function getCookie(name) {
   var value = "; " + document.cookie;

@@ -25,6 +25,15 @@ module.exports = function (gameHelpers) {
     })
   })
 
+  router.post("/uno/:id/play", (req, res) => {
+    gameHelpers.playCard(req.body.card)
+    
+    .then((playerHand) => {
+      console.log(req.body.card)
+      res.render("gameID", {playerHand, gameID: req.params.id, username: req.params.username})
+    })
+  })
+
   router.post("/uno/:id/drawCard", (req, res) => {
     gameHelpers.getDeck()
     .then((cards) => {

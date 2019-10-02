@@ -1,10 +1,13 @@
 module.exports = (db) => {
     let playerHand = [];
+    let cardPlayed = null;
 
     const getAllGames = () => {
         return db.query(`
-        SELECT *
+        SELECT games.id, users.username
         FROM games
+        JOIN users ON users.id = creator_id
+        GROUP BY games.id, users.username
         ORDER BY id;
         `)
         .then((response) => {
@@ -48,10 +51,26 @@ module.exports = (db) => {
         return playerHand
     }
 
+    const playCard = (card) => {
+        console.log("CARD " + card)
+        cardPlayed = card;
+        for (let [deckcard, index] of playerHand.entries() ) {
+            if(deckcard === card ){
+                playerHand.splice(index, 1);
+            }
+        }
+        return playerHand;
+    }
+    const getCardPlayed = () => {
+        return cardPlayed;
+    }
+
     return {
         getAllGames,
         newGame,
         getDeck,
+        playCard, 
+        getCardPlayed, 
         // startingCards,
         drawCard
     }

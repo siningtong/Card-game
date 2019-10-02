@@ -91,7 +91,7 @@
                 
                   <% for(let card of playerHand) { %>
                     <div class="card-container">
-                        <img class="testDiv" data-value="<%=card.value%>" data-colour="<%=card.colour%>" src="<%=card.image_url%>" />
+                        <img class="testDiv" data-game="<%=gameID%>"data-value="<%=card.value%>" data-colour="<%=card.colour%>" src="<%=card.image_url%>" />
                     </div>
                   <% } %>
                   
