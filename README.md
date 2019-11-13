@@ -8,13 +8,13 @@ This is a full stack web app project built in 2 weeks by a group of 3. It was ma
 ## Website Demo 
 
 - The Uno Home Page:
-!["Home Page!"]()
-- Login/Signup Demo:
-!["Login/Signup!"]()
+!["Home Page!"](https://github.com/siningtong/Card-game/blob/master/public/gifs/HomePage.gif?raw=true)
 - Mobile Support and Dynamic scrolling:
-!["Scrolling!"]()
+!["Scrolling!"](https://github.com/siningtong/Card-game/blob/master/public/gifs/MobileSupport.gif?raw=true)
+- Login/Signup Demo:
+!["Login/Signup!"](https://github.com/siningtong/Card-game/blob/master/public/gifs/LoginSignup.gif?raw=true)
 - The Game room
-!["Uno!"]()
+!["Uno!"](https://github.com/siningtong/Card-game/blob/master/public/gifs/GameRoom.gif?raw=true)
 
 ## Known Bugs
 
